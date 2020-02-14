@@ -28,7 +28,12 @@ public class PascalTriangle {
         } else if (j == i) {
             return new int[]{1, 1};
         }
-        final int[] r = helper(i - 1, j, p);
+        int[] r;
+        if (p > 0) {
+            r = new int[] {p, 0};
+        } else {
+            r = helper(i - 1, j, p);
+        }
         final int[] l = helper(i - 1, j - 1, r[1]);
         return new int[] {r[0] + l[0], l[0]};
     }
